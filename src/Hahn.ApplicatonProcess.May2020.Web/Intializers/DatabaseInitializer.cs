@@ -23,7 +23,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Intializers
                     Address = "M G Road, Bangalore",
                     Age = 35,
                     CountryOfOrigin = "India",
-                    EmailAddress = "akumar@gmailcom",
+                    EmailAddress = "akumar@gmail.com",
                     Hired = false
                 },
                 new Applicant

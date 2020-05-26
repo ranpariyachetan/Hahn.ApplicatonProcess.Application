@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Hahn.ApplicatonProcess.May2020.Data.DataAccess;
+using Hahn.ApplicatonProcess.May2020.Data.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +29,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<HahnDbContext>(options => options.UseInMemoryDatabase("hahndatabase"));
-
+            services.AddScoped<IApplicantRepository, ApplicantRepository>();
             services.AddControllers();
         }
 

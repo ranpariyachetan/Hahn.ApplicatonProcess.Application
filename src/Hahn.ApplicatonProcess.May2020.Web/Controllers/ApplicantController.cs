@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Net;
 using Hahn.ApplicatonProcess.May2020.Data.DataAccess;
+using Hahn.ApplicatonProcess.May2020.Data.Repositories;
 using Hahn.ApplicatonProcess.May2020.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +14,11 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
     public class ApplicantController : ControllerBase
     {
         private readonly HahnDbContext dbContext;
-        public ApplicantController(HahnDbContext dbContext)
+        private readonly IApplicantRepository applicantRepository;
+        public ApplicantController(HahnDbContext dbContext, IApplicantRepository applicantRepository)
         {
             this.dbContext = dbContext;
+            this.applicantRepository = applicantRepository;
         }
 
         // GET: api/<ApplicantController>
@@ -28,18 +29,37 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         }
 
         // GET api/<ApplicantController>/5
-        [HttpGet("{id}")]
-        public Applicant Get(int id)
+        //[HttpGet()]
+        [HttpGet("{id}", Name =nameof(GetById))]
+        public Applicant GetById(int id)
         {
-            var applicant = this.dbContext.Applicants.FirstOrDefault(x => x.ID == id);
+            var applicant = this.applicantRepository.GetById(id);
 
-            return applicant;
+            if(applicant != null)
+                return applicant;
+            else
+            {
+                this.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return null;
+            }
         }
 
         // POST api/<ApplicantController>
         [HttpPost]
-        public void Post([FromBody] Applicant value)
+        public ActionResult Post([FromBody] Applicant value)
         {
+            var savedEntity = this.applicantRepository.Add(value);
+
+            var link = this.Url.ActionLink("GetById", "Applicant", savedEntity.ID);
+
+            return CreatedAtAction("GetById", new { id = savedEntity.ID.ToString() }, savedEntity);
+            //return new CreatedAtRouteResult("GetById", savedEntity.ID, savedEntity);
+            
+            //return Created(new Uri(this.Url.Action("GetById", "Applicant", savedEntity.ID), UriKind.Relative), savedEntity);
+
+            //this.Url.Action("GetById", "Applicant", savedEntity.ID)
+            //return Created( CreatedAtAction(nameof(Get), savedEntity.ID);
+            //return new JsonResult(savedEntity);
         }
 
         // PUT api/<ApplicantController>/5
