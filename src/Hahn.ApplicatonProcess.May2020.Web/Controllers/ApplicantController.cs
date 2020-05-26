@@ -2,8 +2,10 @@
 using System.Net;
 using Hahn.ApplicatonProcess.May2020.Data.Repositories;
 using Hahn.ApplicatonProcess.May2020.Domain.Models;
+using Hahn.ApplicatonProcess.May2020.Web.Swagger;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Filters;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -74,6 +76,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         /// <param name="value">Applicant object.</param>
         /// <returns>Saved details of applicant.</returns>
         // POST api/<ApplicantController>
+        [SwaggerRequestExample(typeof(Applicant), typeof(ApplicantModelPostExample))]
         [HttpPost]
         public ActionResult Post([FromBody] Applicant value)
         {
@@ -99,6 +102,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         /// <param name="value">Applicant object.</param>
         /// <returns>Details of updated applicant.</returns>
         // PUT api/<ApplicantController>/5
+        [SwaggerRequestExample(typeof(Applicant), typeof(ApplicantModelPutExample))]
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Applicant value)
         {

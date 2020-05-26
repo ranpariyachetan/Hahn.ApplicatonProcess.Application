@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hahn.ApplicatonProcess.May2020.Web</name>
+    </assembly>
+    <members>
+        <member name="M:Hahn.ApplicatonProcess.May2020.Web.Controllers.ApplicantController.Get">
+            <summary>
+            Gets list of all applicants.
+            </summary>
+            <returns>The collection of all applicants.</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.May2020.Web.Controllers.ApplicantController.GetById(System.Int32)">
+            <summary>
+            Gets details of an applicant with specified id.
+            </summary>
+            <param name="id">Id of applicant.</param>
+            <returns>Details of applicant.</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.May2020.Web.Controllers.ApplicantController.Post(Hahn.ApplicatonProcess.May2020.Domain.Models.Applicant)">
+            <summary>
+            Saves details of new applicant.
+            </summary>
+            <param name="value">Applicant object.</param>
+            <returns>Saved details of applicant.</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.May2020.Web.Controllers.ApplicantController.Put(System.Int32,Hahn.ApplicatonProcess.May2020.Domain.Models.Applicant)">
+            <summary>
+            Updates details of applicant with specified id.
+            </summary>
+            <param name="id">Id of applicant.</param>
+            <param name="value">Applicant object.</param>
+            <returns>Details of updated applicant.</returns>
+        </member>
+        <member name="M:Hahn.ApplicatonProcess.May2020.Web.Controllers.ApplicantController.Delete(System.Int32)">
+            <summary>
+            Deletes applicant with specified if.
+            </summary>
+            <param name="id">Id of applicant.</param>
+            <returns>Empty response.</returns>
+        </member>
+    </members>
+</doc>
