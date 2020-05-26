@@ -32,7 +32,13 @@ namespace Hahn.ApplicatonProcess.May2020.Data.Repositories
                 this.dbContext.Applicants.Remove(entity);
                 this.dbContext.SaveChanges();
             }
-        }       
+        }
+
+        public void Delete(Applicant entity)
+        {
+            this.dbContext.Applicants.Remove(entity);
+            this.dbContext.SaveChanges();
+        }
 
         public Applicant GetById(int entityId)
         {
@@ -41,7 +47,9 @@ namespace Hahn.ApplicatonProcess.May2020.Data.Repositories
 
         public Applicant Update(Applicant entity)
         {
-            throw new NotImplementedException();
+            this.dbContext.Applicants.Update(entity);
+            this.dbContext.SaveChanges();
+            return entity;
         }
 
         public IList<Applicant> GetAll()
