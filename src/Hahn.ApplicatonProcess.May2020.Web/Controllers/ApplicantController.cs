@@ -21,6 +21,10 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
             this.logger = logger;
         }
 
+        /// <summary>
+        /// Gets list of all applicants.
+        /// </summary>
+        /// <returns>The collection of all applicants.</returns>
         // GET: api/<ApplicantController>
         [HttpGet]
         public ActionResult Get()
@@ -36,8 +40,12 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets details of an applicant with specified id.
+        /// </summary>
+        /// <param name="id">Id of applicant.</param>
+        /// <returns>Details of applicant.</returns>
         // GET api/<ApplicantController>/5
-        //[HttpGet()]
         [HttpGet("{id}", Name =nameof(GetById))]
         public ActionResult GetById(int id)
         {
@@ -60,6 +68,11 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Saves details of new applicant.
+        /// </summary>
+        /// <param name="value">Applicant object.</param>
+        /// <returns>Saved details of applicant.</returns>
         // POST api/<ApplicantController>
         [HttpPost]
         public ActionResult Post([FromBody] Applicant value)
@@ -79,6 +92,12 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates details of applicant with specified id.
+        /// </summary>
+        /// <param name="id">Id of applicant.</param>
+        /// <param name="value">Applicant object.</param>
+        /// <returns>Details of updated applicant.</returns>
         // PUT api/<ApplicantController>/5
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Applicant value)
@@ -117,6 +136,11 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes applicant with specified if.
+        /// </summary>
+        /// <param name="id">Id of applicant.</param>
+        /// <returns>Empty response.</returns>
         // DELETE api/<ApplicantController>/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
