@@ -53,13 +53,6 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
             var link = this.Url.ActionLink("GetById", "Applicant", savedEntity.ID);
 
             return CreatedAtAction("GetById", new { id = savedEntity.ID.ToString() }, savedEntity);
-            //return new CreatedAtRouteResult("GetById", savedEntity.ID, savedEntity);
-            
-            //return Created(new Uri(this.Url.Action("GetById", "Applicant", savedEntity.ID), UriKind.Relative), savedEntity);
-
-            //this.Url.Action("GetById", "Applicant", savedEntity.ID)
-            //return Created( CreatedAtAction(nameof(Get), savedEntity.ID);
-            //return new JsonResult(savedEntity);
         }
 
         // PUT api/<ApplicantController>/5
