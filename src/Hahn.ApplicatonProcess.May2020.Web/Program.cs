@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Hahn.ApplicatonProcess.May2020.Web.Extensions;
+using Serilog;
 
 namespace Hahn.ApplicatonProcess.May2020.Web
 {
@@ -13,6 +14,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
