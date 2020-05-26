@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
 using Hahn.ApplicatonProcess.May2020.Data.DataAccess;
 using Hahn.ApplicatonProcess.May2020.Data.Repositories;
+using Hahn.ApplicatonProcess.May2020.Web.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +32,16 @@ namespace Hahn.ApplicatonProcess.May2020.Web
         {
             services.AddDbContext<HahnDbContext>(options => options.UseInMemoryDatabase("hahndatabase"));
             services.AddScoped<IApplicantRepository, ApplicantRepository>();
+            
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ModelStateValidationFilter());
+            })
+            .AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
+
             services.AddControllers();
         }
 
