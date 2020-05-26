@@ -24,14 +24,16 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         [HttpGet]
         public IEnumerable<Applicant> Get()
         {
-            return new List<Applicant>();
+            return this.dbContext.Applicants;
         }
 
         // GET api/<ApplicantController>/5
         [HttpGet("{id}")]
         public Applicant Get(int id)
         {
-            return new Applicant();
+            var applicant = this.dbContext.Applicants.FirstOrDefault(x => x.ID == id);
+
+            return applicant;
         }
 
         // POST api/<ApplicantController>

@@ -40,7 +40,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
