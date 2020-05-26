@@ -28,6 +28,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         /// </summary>
         /// <returns>The collection of all applicants.</returns>
         // GET: api/<ApplicantController>
+        [Produces("application/json")]
         [HttpGet]
         public ActionResult Get()
         {
@@ -48,6 +49,7 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         /// <param name="id">Id of applicant.</param>
         /// <returns>Details of applicant.</returns>
         // GET api/<ApplicantController>/5
+        [Produces("application/json")]
         [HttpGet("{id}", Name =nameof(GetById))]
         public ActionResult GetById(int id)
         {
@@ -77,6 +79,11 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         /// <returns>Saved details of applicant.</returns>
         // POST api/<ApplicantController>
         [SwaggerRequestExample(typeof(Applicant), typeof(ApplicantModelPostExample))]
+        [ProducesResponseType(typeof(Applicant), (int)HttpStatusCode.Created)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
+        [Produces("application/json")]
+        [Consumes("application/json")]
         [HttpPost]
         public ActionResult Post([FromBody] Applicant value)
         {
@@ -103,6 +110,11 @@ namespace Hahn.ApplicatonProcess.May2020.Web.Controllers
         /// <returns>Details of updated applicant.</returns>
         // PUT api/<ApplicantController>/5
         [SwaggerRequestExample(typeof(Applicant), typeof(ApplicantModelPutExample))]
+        [ProducesResponseType(typeof(Applicant), (int)HttpStatusCode.Accepted)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
+        [Produces("application/json")]
+        [Consumes("application/json")]
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Applicant value)
         {
